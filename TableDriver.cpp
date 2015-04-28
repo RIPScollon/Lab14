@@ -30,11 +30,18 @@ int main()
    cout << num_items << endl;
 
    TableSortedList<CD>* slt = new TableSortedList<CD>(&CD::compare_items, &CD::compare_keys);
-
-   //DO THIS
-   //thoroughly test your table
-
-
+   
+   ListArrayIterator<CD>* iter = cds->iterator();
+   while(iter->hasNext())
+   {
+	   CD* cd = iter->next();
+		slt->tableInsert(cd);
+   }
+   delete iter;
+   cout << slt->tableSize();
+   
+   
+   
 
 
 
