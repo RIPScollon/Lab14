@@ -63,8 +63,12 @@ void TableSortedList<T>::tableInsert(T* item)//does not allow duplicate search k
 template <class T>
 bool TableSortedList<T>::tableRemove(String* search_key)  //returns true if delete is successful (need to call tableRetrieve to see if the item is there)
 {
-	T* removedItem = sldl->tableRetrieve(search_key);
-	delete removedItem;
+	T* removedItem = tableRetrieve(search_key);
+	if (removedItem ==NULL)
+	{
+		return false;
+	}
+	sldl->remove(search_key);
 	return true;
 }
 
